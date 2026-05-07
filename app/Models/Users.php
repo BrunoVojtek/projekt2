@@ -9,7 +9,7 @@ class Users{
     private string $role;
     private string $created_at;
 
-    public function __construct(string $username, string $password, string $role = "user", $isHash = false){
+    public function __construct(string $username, string $password, string $role = "user", bool $isAllredyHash = false){
         $this->username = $username;
         $this->password = password_hash($password,PASSWORD_DEFAULT);
         $this->role = $role;
@@ -20,7 +20,7 @@ class Users{
     public function getId() :int{
         return $this->id;
     }
-    public function getUsernameO() :string{
+    public function getUsername() :string{
         return $this->username;
     }
     public function getPassword() :string{

@@ -11,9 +11,26 @@ use App\Models\Users;
 $db = new Database();
 // vytvori pripojenie k databaze
 $pdo = $db->getConnection();
-// vypise obsah z $pdo
-var_dump($pdo);
+
 // vytvori premennu ktora bude mat vlastnosti z UserRepository.php
 $userRepo = new UserRepository($pdo);
-$userRepo->save();
+if ($user = $userRepo->findByUsername("Matej")){
+    $user->setUsername("Peter");
+    $userRepo->update($user);
+}
 
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
