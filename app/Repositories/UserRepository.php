@@ -84,4 +84,29 @@ class UserRepository{
             return false;
         }
     }
+    public function getAll() :?array {
+       try{
+
+           $uzivatelia = [];
+           $sql = "SELECT * FROM users";
+           $stmt = $this->db->prepare($sql);
+           $stmt->execute();   
+           while ($row = $stmt->fetch()) {   
+               $user = new Users(
+                   $row["username"],
+                   $row["password"],
+                   $row["role"],
+                   true
+                );
+                $user->setId((int)$row["id"]);
+                $user->setCreatedAt($row["created_at"]);  
+                $uzivatelia[] = $user;
+            }   
+            return $uzivatelia;
+        }
+    catch(PDOExeption $e){
+        return null;
+    }            
+
+}
 }

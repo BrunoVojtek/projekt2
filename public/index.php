@@ -14,23 +14,14 @@ $pdo = $db->getConnection();
 
 // vytvori premennu ktora bude mat vlastnosti z UserRepository.php
 $userRepo = new UserRepository($pdo);
-if ($user = $userRepo->findByUsername("Matej")){
+/*if ($user = $userRepo->findByUsername("Matej")){
     $user->setUsername("Peter");
     $userRepo->update($user);
-}
+}*/
+$users = $userRepo->getAll();
 
 
-
+include __DIR__ . "/../views/home.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
