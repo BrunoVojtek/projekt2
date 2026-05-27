@@ -13,21 +13,24 @@
         <div class="container">
             <div class="wrapper py-3">
 
-                <form action="#" method="POST">
+                <form action="index.php" method="POST">
                     <div class="row">
                         <div class="col">
                             
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username" placeholder="Username" required>
+                                <input type="text" class="form-control" id="username" name="username"  placeholder="Username" required>
                             </div>
                         </div>
+    
                         <div class="col">
-                            
+
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="role" aria-describedby="emailHelp" name="role" placeholder="Role" required>
+                                <input type="text" class="form-control" id="password" name="password"  placeholder="Password" required>
                             </div>
                         </div>
+                        </div>                       
                         <div class="col">
+                            <input type="hidden" name="action" value="save">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </div>
@@ -50,31 +53,35 @@
                         <td><?= $role = $user->getRole();?></td>
                         <td><?= $createdAt = $user->getCreatedAt();?></td>
                         <td>
-                            <form action="#" method="post">
-                                <input type="hidden" name="id" value="<?php $user->getId()?>">
-                                <input type="hidden" name="username" value="<?php $user->getUsername()?>">
-                                <input type="hidden" name="role" value="<?php $user->getRole()?>">
-                                <input type="hidden" name="createdAt" value="<?php $user->getCreatedAt()?>">
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="info" >
+                                <input type="hidden" name="id" value="<?= $user->getId()?>">
+                                <input type="hidden" name="username" value="<?= $user->getUsername()?>">
+                                <input type="hidden" name="role" value="<?= $user->getRole()?>">
+                                <input type="hidden" name="createdAt" value="<?= $user->getCreatedAt()?>">
                                 <button type="submit" class="btn btn-success">Info</button>
                             </form>
                         </td>
                         <td>
-                            <form action="#" method="post">
+                            <form action="update.php" method="post">
                                 <input type="hidden" name="action" value="update" >
-                                <input type="hidden" name="id" value="<?= (int)$id;?>">
+                                <input type="hidden" name="id" value="<?= $user->getId()?>">
+                                <input type="hidden" name="username" value="<?= $user->getUsername()?>">
+                                <input type="hidden" name="role" value="<?= $user->getRole()?>">
+                                <input type="hidden" name="id" value="<?= $username;?>">
                                 <button type="submit" class="btn btn-warning">Update</button>
                             </form>
                         </td>
                         <td>
-                            <form action="#" method="post">
+                            <form action="index.php" method="post">
                                 <input type="hidden" name="action" value="delete" >
-                                <input type="hidden" name="id" value="<?= $id;?>">
-                                <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+                                <input type="hidden" name="username" value="<?= $username;?>">
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
                     
-                    <?php endforeach; var_dump($_POST);?>
+                    <?php endforeach;?>
 
                 </tbody>
             </table>

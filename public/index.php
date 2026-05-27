@@ -20,8 +20,28 @@ $userRepo = new UserRepository($pdo);
 }*/
 $users = $userRepo->getAll();
 
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])){
+    if($_POST["action"]==="delete"){
+        $userRepo->delete($_POST["username"]);
 
+    }
+    elseif ($_POST["action"]==="update") {
+        header("Location: update.php");
+        exit();
+    }
+    elseif($_POST["action"]==="save"){
+    
+        $newUser = new Users($_POST["username"], $_POST["password"]);
+        $save = $userRepo->save($newUser);
+        header("Location: index.php");
+        exit();
+        }
+    }
+
+var_dump($_POST);
 include __DIR__ . "/../views/home.php";
+
+
 ?>
 
 
