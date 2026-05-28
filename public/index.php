@@ -21,6 +21,8 @@ $userController = new UserController($userRepo);
 $router  = new Router();
 
 $router->add("/", $userController, "index");
+$router->add("/login", $userController, "login");
+$router->add("/register", $userController,"register");
 $router->resolve();
 
 ?>
