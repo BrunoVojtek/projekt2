@@ -9,6 +9,21 @@ form{
     width: 650px;
     background-color: rgba(31, 153, 117, 0.658);
     border: 20px solid rgb(39, 184, 148);
-    padding: 80px;
+    padding: 20px 80px;
     border-radius: 20px;
+}
+ .register{
+    background-color: rgba(255, 0, 0, 0.534);
+    border-color: rgba(160, 24, 24, 0.616);
+}
+.preklik{
+    padding-top: 20px;
+}
+.preklik-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn{
+    height: 50px;
 }

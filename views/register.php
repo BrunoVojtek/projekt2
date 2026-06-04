@@ -6,24 +6,33 @@
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
+    <style>
+    </style>
  </head>
   <body>
-    <h1>Register</h1>
-        <form class="container">
+  <?php if(isset($_SESSION["flash_error"])): ?>
+  <div class="alert alert-danger" role="alert">
+    <?php 
+    echo $_SESSION["flash_error"];
+    unset($_SESSION["flash_error"]); 
+    ?>
+</div>
+<?php endif;?>
+
+    <form class="container register" method="POST">
+          <h1 class="h1-register">Register</h1>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" class="form-control">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" >
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" >
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="preklik-button">
+              <button type="submit" class="btn btn-primary">Register</button>
+              <p class="preklik">Mate uz ucet? <a href="login">Login</a></p>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            <p>Mate uz ucet? <a href="login">Login</a></p>
         </form>  
 
 
