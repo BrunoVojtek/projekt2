@@ -19,7 +19,7 @@
 
                 $user = $this->userRepo->findByUsername($username);
 
-                if(!$user || !$user->password_verify($password)){
+                if(!$user || !$user->passwordVerify($password)){
                     $_SESSION["flash_error"] = "Nespravne meno alebo heslo";
                     header("Location:/projekt1/public/login");
                     exit();
@@ -54,13 +54,14 @@
                     header("Location:/projekt1/public/register");
                     exit();
                 }
-                $newUser = new Users($username, $password, false);
+                $newUser = new Users($username, $password,false);
 
                 if($this->userRepo->save($newUser)){
                     $_SESSION["flash_succes"] = "Uzivatel bol vytvoreny";
                     header("Location:/projekt1/public/login");
 
                 }
+
 
             }
 
@@ -70,7 +71,14 @@
         }
         public function logout() :void{
             session_destroy();
-            header("Location:/projekt1/public/");
+            header("Location:/projekt1/public/login");
             exit();
+        }
+        public function dashboard(){
+            if (!$_SESSION["user_username"]){
+                header("Location:/projekt1/public/login");
+                exit();
+            }
+            include __DIR__ . "/../../views/dashboard.php";
         }
     }

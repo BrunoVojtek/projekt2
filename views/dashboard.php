@@ -11,8 +11,9 @@
     
 
   <div class="container">
-    <h2><?= $_SESSION["username"]; ?></h2>
+    <h2><?= $_SESSION["user_username"]; ?></h2>
   </div>
+  <a href="/projekt1/public/logout">Logout</a>
 
 
 

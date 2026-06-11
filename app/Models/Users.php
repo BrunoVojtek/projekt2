@@ -11,7 +11,7 @@ class Users{
 
     public function __construct(string $username, string $password, string $role = "user", bool $isAllredyHash = false){
         $this->username = $username;
-        $this->password = password_hash($password,PASSWORD_DEFAULT);
+        $this->password = $isAllredyHash ? $password: password_hash($password,PASSWORD_DEFAULT);
         $this->role = $role;
         
     }
